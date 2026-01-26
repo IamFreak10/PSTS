@@ -21,4 +21,13 @@ function longestWord(str: string): string {
 function removeDuplictae(str: string): string {
   return [...new Set<string>(str)].join('');
 }
-console.log(longestWord('Bananana Bananana '));
+// console.log(longestWord('Bananana Bananana '));
+
+function freqMap(str: string): Obj {
+  let obj: Obj = {};
+  for (let ch of str) {
+    obj[ch] = (obj[ch] || 0) + 1;
+  }
+  return obj;
+}
+// console.log(freqMap('HOwarnatiii'));
