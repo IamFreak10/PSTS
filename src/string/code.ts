@@ -31,3 +31,16 @@ function freqMap(str: string): Obj {
   return obj;
 }
 // console.log(freqMap('HOwarnatiii'));
+function isPlaindrome(str: string): boolean {
+  let strTrim = str.toLowerCase();
+  let l = 0,
+    r = str.length - 1;
+  while (l < r) {
+    if (str[l] !== str[r]) return false;
+    l++;
+    r--;
+  }
+  return true;
+}
+
+console.log(isPlaindrome('eye'));
