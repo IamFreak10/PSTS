@@ -42,5 +42,6 @@ function isPlaindrome(str: string): boolean {
   }
   return true;
 }
+console.log('Changed From  linux');
 
 console.log(isPlaindrome('eye'));
