@@ -20,12 +20,11 @@ function longestCommonPrefix(strs: string[]): string {
   if (strs.length === 0) return '';
   strs.sort();
   let prefix = '';
-  const first= strs[0];
+  const first = strs[0];
   const last = strs[strs.length - 1];
   const n = Math.min(first!.length, last!.length);
 
   for (let i = 0; i < n; i++) {
-    
     if (first[i] === last[i]) {
       prefix += first[i];
     } else {
@@ -34,5 +33,18 @@ function longestCommonPrefix(strs: string[]): string {
   }
   return prefix;
 }
-
-
+/* Input: nums = [1,1,2]
+Output: 2, nums = [1,2,_] */
+function removeDuplicates(nums: number[]): number {
+  if (nums.length === 0) return 0;
+  let cnt = 0;
+  for (let j = 1; j < nums.length; j++) {
+    let now: number = nums[j];
+    if (nums[cnt] !== now) {
+      cnt++;
+      nums[cnt] = now;
+    }
+  }
+  return cnt+1;
+}
+console.log(removeDuplicates([1, 1, 2]));
