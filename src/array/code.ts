@@ -45,36 +45,61 @@ function removeDuplicates(nums: number[]): number {
       nums[cnt] = now;
     }
   }
-  return cnt+1;
+  return cnt + 1;
 }
 // console.log(removeDuplicates([1, 1, 2]));
 
-
 // intersection in array
 function intersection(nums1: number[], nums2: number[]): number[] {
-  let inter:Set<number>=new Set([...nums1].filter(x=>nums2.includes(x)))
-  return[...inter]
+  let inter: Set<number> = new Set([...nums1].filter((x) => nums2.includes(x)));
+  return [...inter];
+}
 
-  };  
-
-  // Find the First and the last positon of a sorted array
+// Find the First and the last positon of a sorted array
+// ?
 // [5,7,7,8,8,10]
 function searchRange(nums: number[], target: number): number[] {
-  let low:number=0;
-  let high:number=nums.length;
-
-    
-  while(low<=high){
-    let mid=Math.floor((low+high)/2);
-    if(nums[mid]===target){
-
-      return[mid-1,mid+1];
-    }else if(nums[mid]<target){
-      low=mid+1;
-    }else{
-      high=mid-1;
+  function fir(): number {
+    let low: number = 0;
+    let high: number = nums.length - 1;
+   
+    let ans = -1;
+    while (low <= high) {
+       let mid = Math.floor((low + high) / 2);
+      let m = nums[mid];
+      if (m === target) {
+        ans = mid;
+        high = mid - 1;
+      } else if (m! < target) {
+        low = mid + 1;
+      } else {
+        high = mid - 1;
+      }
     }
+    return ans;
   }
-  return[-1,-1];
+  function las(): number {
+    let low: number = 0;
+    let high: number = nums.length - 1;
+    let mid = Math.floor((low + high) / 2);
+    let ans = -1;
+    while (low <= high) {
+      let m = nums[mid];
+      if (m === target) {
+        ans = mid;
+        low = mid + 1;
+      } else if (m! < target) {
+        low = mid + 1;
+      } else {
+        high = mid - 1;
+      }
+    }
+    return ans;
+  }
 
-};
+  let str = fir();
+  if (str === -1) return [-1, -1];
+  const end = las();
+  return [str, end];
+}
+console.log(searchRange([5, 7, 7, 8, 8, 10], 8));
