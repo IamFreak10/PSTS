@@ -1,4 +1,4 @@
-// 50. Pow(x, n)
+//* 50. Pow(x, n)
 function myPow(x: number, n: number): number {
   if (n == 0) return 1;
   if (n < 0) {
@@ -11,4 +11,16 @@ function myPow(x: number, n: number): number {
     return x * myPow(x, n - 1);
   }
 }
-console.log(myPow(4, -2));
+// console.log(myPow(4, -2));
+
+//*  509. Fibonacci Number
+
+function fib(n: number): number {
+  let map: Map<number, number> = new Map();
+  if (n === 0) return 0;
+  if (n === 1) return 1;
+  if (map.has(n)) return map.get(n)!;
+  const res = fib(n - 1) + fib(n - 2);
+  map.set(n, res);
+  return res;
+}
