@@ -24,3 +24,21 @@ function fib(n: number): number {
   map.set(n, res);
   return res;
 }
+//*344 Reverse String
+
+let s = ['h', 'e', 'l', 'l', 'o'];
+
+function reverseString(s: string[]): void {
+  let l: number = 0;
+  let r: number = s.length - 1;
+
+  while (l < r) {
+    let c = s[l];
+    s[l] = s[r];
+    s[r] = c;
+    l++;
+    r--;
+  }
+}
+reverseString(s);
+console.log(s);
